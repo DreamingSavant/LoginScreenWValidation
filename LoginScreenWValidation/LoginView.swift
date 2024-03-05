@@ -9,8 +9,9 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var username: String
-    @Binding var password: String
+    @State var username: String
+    @State var password: String
+    
     var body: some View {
         ZStack(alignment: .center) {
             Color.purple.edgesIgnoringSafeArea(.all) 
@@ -34,10 +35,10 @@ struct LoginView: View {
                     .font(.system(size: 42, design: .serif))
                     .bold()
                 
-                PasswordUserNameTextField(title: "Email/UserName", image: UIImage(systemName: "person") ?? .add, placeHolderText: "Enter UserName/Email here", isShowButtonHidden: true, isTextVisible: true)
+                PasswordUserNameTextField(title: "Email/UserName", image: UIImage(systemName: "person") ?? .add, placeHolderText: "Enter UserName/Email here", isShowButtonHidden: true, isTextVisible: true, field: username)
                     .padding(.bottom, 10)
                 
-                PasswordUserNameTextField(title: "Password", image: UIImage(systemName: "key") ?? .add, placeHolderText: "Enter Password here", isShowButtonHidden: false)
+                PasswordUserNameTextField(title: "Password", image: UIImage(systemName: "key") ?? .add, placeHolderText: "Enter Password here", isShowButtonHidden: false, field: password)
                     .padding(.bottom, 40)
                 
                 CustomButtonView(isFilledButton: true)
@@ -62,5 +63,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(username: .constant("Exanoke"), password: .constant("ZZQQRR"))
+    LoginView(username: "", password: "")
 }
