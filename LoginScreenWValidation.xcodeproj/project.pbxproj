@@ -11,6 +11,9 @@
 		C60C40162B96720300864863 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C40152B96720300864863 /* ContentView.swift */; };
 		C60C40182B96720500864863 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60C40172B96720500864863 /* Assets.xcassets */; };
 		C60C401B2B96720500864863 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60C401A2B96720500864863 /* Preview Assets.xcassets */; };
+		C60C40222B96756500864863 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C40212B96756500864863 /* LoginView.swift */; };
+		C60C40242B96770B00864863 /* PasswordUserNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C40232B96770B00864863 /* PasswordUserNameTextField.swift */; };
+		C60C40262B967DE800864863 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C40252B967DE800864863 /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		C60C40152B96720300864863 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C60C40172B96720500864863 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C60C401A2B96720500864863 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C60C40212B96756500864863 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C60C40232B96770B00864863 /* PasswordUserNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUserNameTextField.swift; sourceTree = "<group>"; };
+		C60C40252B967DE800864863 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,9 @@
 				C60C40152B96720300864863 /* ContentView.swift */,
 				C60C40172B96720500864863 /* Assets.xcassets */,
 				C60C40192B96720500864863 /* Preview Content */,
+				C60C40212B96756500864863 /* LoginView.swift */,
+				C60C40232B96770B00864863 /* PasswordUserNameTextField.swift */,
+				C60C40252B967DE800864863 /* CustomButtonView.swift */,
 			);
 			path = LoginScreenWValidation;
 			sourceTree = "<group>";
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60C40222B96756500864863 /* LoginView.swift in Sources */,
 				C60C40162B96720300864863 /* ContentView.swift in Sources */,
+				C60C40242B96770B00864863 /* PasswordUserNameTextField.swift in Sources */,
 				C60C40142B96720300864863 /* LoginScreenWValidationApp.swift in Sources */,
+				C60C40262B967DE800864863 /* CustomButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
