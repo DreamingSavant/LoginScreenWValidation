@@ -25,58 +25,39 @@ class LoginViewModel: ObservableObject {
                     return false
                 }
                 
-                guard email.contains("@"), email.contains(".") else {
-                    self.alertMessage = "Please enter a valid email address."
+                guard email.contains("@"), email.contains(".") && self.isValidEmail(email) else {
+//                    self.alertMessage = "Please enter a valid email address."
                     return false
                 }
                 
                 guard password.count >= 8 else {
-                    self.alertMessage = "Password must be at least 8 characters long."
+//                    self.alertMessage = "Password must be at least 8 characters long."
                     return false
                 }
                 
+                self.alertMessage = "You are now logged in!"
                 return true
             }
             .assign(to: \.isFormValid, on: self)
             .store(in: &cancellables)
-        
-        $isFormValid
-            .receive(on: RunLoop.main)
-            .map { $0 == false }
-            .assign(to: \.showAlert, on: self)
-            .store(in: &cancellables)
     }
     
-//    func validateInputs() -> Bool {
-//        if viewModel.email.isEmpty || viewModel.password.isEmpty {
-//            alertMessage = "Please enter both email and password."
-//            showingAlert = true
-//            viewModel.isFormValid = false
-//            return false
-//        }
-//        
-//        if !viewModel.email.contains("@") || !viewModel.email.contains(".") {
-//            alertMessage = "Please enter a valid email address."
-//            showingAlert = true
-//            viewModel.isFormValid = false
-//            return false
-//        }
-//        
-//        if viewModel.password.count < 8 {
-//            alertMessage = "Password must be at least 8 characters long."
-//            showingAlert = true
-//            viewModel.isFormValid = false
-//            return false
-//        }
-//        
-//        showingAlert = false
-//        viewModel.isFormValid = true
-//        return true
-//    }
+    func isValidEmail(_ email: String) -> Bool {
+        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailPattern)
+        self.alertMessage = "Please enter a valid email address."
+        return emailPred.evaluate(with: email)
+    }
     
-//    func isValidEmail(_ email: String) -> Bool {
-//        let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailPattern)
-//        return emailPred.evaluate(with: email)
-//    }
+    func isValidPassword(_ password: String) -> Bool {
+        if password.count <= 8  {
+            self.alertMessage = "Password must be at least 8 characters long."
+            return false
+        } else if password == email {
+            self.alertMessage = "Password must not be the same as email."
+            return false
+        } else {
+            return true
+        }
+    }
 }

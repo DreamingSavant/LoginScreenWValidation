@@ -12,7 +12,7 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
 
     @State private var showingAlert = false
-    @State private var alertMessage = ""
+//    @State private var alertMessage = ""
     
     var body: some View {
         ZStack(alignment: .center) {
@@ -27,7 +27,7 @@ struct LoginView: View {
             
         }
         .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Login Error"), message: Text(alertMessage), dismissButton: .default(Text("OK"), action: {
+            Alert(title: Text("Alert!"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK"), action: {
                 viewModel.showAlert = false
             }))
         }
@@ -58,9 +58,19 @@ struct LoginView: View {
             
             CustomTextField(title: "Email", image: UIImage(systemName: "envelope") ?? .add, placeHolderText: "Enter Email here", isShowButtonHidden: true, isTextVisible: true, field: $viewModel.email)
                 .padding(.bottom, 10)
+                .onSubmit {
+                    if !viewModel.isValidEmail(viewModel.email) {
+                        viewModel.showAlert = true
+                    }
+                }
             
             CustomTextField(title: "Password", image: UIImage(systemName: "lock") ?? .add, placeHolderText: "Enter Password here", isShowButtonHidden: false, field: $viewModel.password)
                 .padding(.bottom, 40)
+                .onSubmit {
+                    if !viewModel.isValidPassword(viewModel.password) {
+                        viewModel.showAlert = true
+                    }
+                }
             
             CustomButtonView(isFilledButton: true, action: {
                 login()
@@ -89,7 +99,11 @@ struct LoginView: View {
     }
     
     func login() {
-        
+        if !viewModel.isFormValid {
+            viewModel.showAlert = true
+        } else {
+            viewModel.showAlert = true
+        }
     }
     
     func createAnAccount() {
