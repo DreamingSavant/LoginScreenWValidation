@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct PasswordUserNameTextField: View {
+struct CustomTextField: View {
     var title: String
     var image: UIImage = .add
     var placeHolderText: String
     var isShowButtonHidden: Bool = false
     @State var isTextVisible: Bool = false
-    @State var field: String = ""
+    @Binding var field: String
     
     var body: some View {
         VStack {
@@ -39,7 +39,7 @@ struct PasswordUserNameTextField: View {
                         isTextVisible
                             .toggle()
                     }
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.purple)
                 }
             }
             .padding(.trailing)
@@ -54,6 +54,7 @@ struct PasswordUserNameTextField: View {
                     Button("Forgot password?") {
                     }
                     .padding(.leading)
+                    .foregroundStyle(.purple)
                     Spacer()
                 }
                 .padding(.top, 10)
@@ -64,5 +65,5 @@ struct PasswordUserNameTextField: View {
 }
 
 #Preview {
-    PasswordUserNameTextField(title: "Email", placeHolderText: "Enter String", field: "")
+    CustomTextField(title: "Email", placeHolderText: "Enter String", field: .constant(""))
 }
